@@ -1,0 +1,126 @@
+<div class="problem-statement">
+ <div class="header">
+  <div class="title">
+   F2. Gregor and the Odd Cows (Hard)
+  </div>
+  <div class="time-limit">
+   <div class="property-title">
+    time limit per test
+   </div>6 seconds
+  </div>
+  <div class="memory-limit">
+   <div class="property-title">
+    memory limit per test
+   </div>256 megabytes
+  </div>
+  <div class="input-file">
+   <div class="property-title">
+    input
+   </div>standard input
+  </div>
+  <div class="output-file">
+   <div class="property-title">
+    output
+   </div>standard output
+  </div>
+ </div>
+ <div>
+  <p><span class="tex-font-style-it">This is the hard version of the problem. The only difference from the easy version is that in this version the coordinates can be <span class="tex-font-style-bf">both</span> odd and even.</span></p>
+  <p>There are $n$ fence-posts at distinct coordinates on a plane. It is guaranteed that no three fence posts lie on the same line.</p>
+  <p>There are an infinite number of cows on the plane, one at every point with integer coordinates.</p>
+  <p>Gregor is a member of the Illuminati, and wants to build a triangular fence, connecting $3$ distinct existing fence posts. A cow <span class="tex-font-style-bf">strictly</span> inside the fence is said to be <span class="tex-font-style-it">enclosed</span>. If there are an <span class="tex-font-style-bf">odd</span> number of enclosed cows and the area of the fence is an <span class="tex-font-style-bf">integer</span>, the fence is said to be <span class="tex-font-style-it">interesting</span>.</p>
+  <p>Find the number of interesting fences.</p>
+ </div>
+ <div class="input-specification">
+  <div class="section-title">
+   Input
+  </div>
+  <p>The first line contains the integer $n$ ($3 \le n \le 6000$), the number of fence posts which Gregor can choose to form the vertices of a fence.</p>
+  <p>Each of the next $n$ line contains two integers $x$ and $y$ ($0 \le x,y \le 10^7$, where $(x,y)$ is the coordinate of a fence post. All fence posts lie at distinct coordinates. No three fence posts are on the same line.</p>
+ </div>
+ <div class="output-specification">
+  <div class="section-title">
+   Output
+  </div>
+  <p>Print a single integer, the number of interesting fences. Two fences are considered different if they are constructed with a different set of three fence posts.</p>
+ </div>
+ <div class="sample-tests">
+  <div class="section-title">
+   Examples
+  </div>
+  <div class="sample-test">
+   <div class="input">
+    <div class="title">
+     Input
+    </div>
+    <pre>3
+0 0
+2 0
+0 4
+</pre>
+   </div>
+   <div class="output">
+    <div class="title">
+     Output
+    </div>
+    <pre>1
+</pre>
+   </div>
+   <div class="input">
+    <div class="title">
+     Input
+    </div>
+    <pre>4
+1 8
+0 6
+5 2
+5 6
+</pre>
+   </div>
+   <div class="output">
+    <div class="title">
+     Output
+    </div>
+    <pre>1
+</pre>
+   </div>
+   <div class="input">
+    <div class="title">
+     Input
+    </div>
+    <pre>10
+170 59
+129 54
+5 98
+129 37
+58 193
+154 58
+24 3
+13 138
+136 144
+174 150
+</pre>
+   </div>
+   <div class="output">
+    <div class="title">
+     Output
+    </div>
+    <pre>29
+</pre>
+   </div>
+  </div>
+ </div>
+ <div class="note">
+  <div class="section-title">
+   Note
+  </div>
+  <p>In the first example, there is only $1$ fence. That fence is interesting since its area is $4$ and there is $1$ enclosed cow, marked in red.</p>
+  <center> 
+   <img class="tex-graphics" src="https://espresso.codeforces.com/9e3ef13118f82e89c5ddcd89348c8703ec6ea5bf.png" style="max-width: 100.0%;max-height: 100.0%;"> 
+  </center>
+  <p>In the second example, there are $4$ possible fences. Only one of them is interesting however. That fence has an area of $8$ and $5$ enclosed cows.</p>
+  <center> 
+   <img class="tex-graphics" src="https://espresso.codeforces.com/54519830da1f6e61df2d41e2713f59bd51424189.png" style="max-width: 100.0%;max-height: 100.0%;"> 
+  </center>
+ </div>
+</div>

@@ -1,0 +1,82 @@
+type: codeforces
+custom_name: F2. Gregor and the Odd Cows (Hard)
+files:
+- name: testData/1/input.txt
+  visible: true
+  text: |-
+    3
+    0 0
+    2 0
+    0 4
+  learner_created: false
+- name: testData/1/output.txt
+  visible: true
+  text: 1
+  learner_created: false
+- name: testData/2/input.txt
+  visible: true
+  text: |-
+    4
+    1 8
+    0 6
+    5 2
+    5 6
+  learner_created: false
+- name: testData/2/output.txt
+  visible: true
+  text: 1
+  learner_created: false
+- name: testData/3/input.txt
+  visible: true
+  text: |-
+    10
+    170 59
+    129 54
+    5 98
+    129 37
+    58 193
+    154 58
+    24 3
+    13 138
+    136 144
+    174 150
+  learner_created: false
+- name: testData/3/output.txt
+  visible: true
+  text: 29
+  learner_created: false
+- name: CMakeLists.txt
+  visible: false
+  text: |-
+    cmake_minimum_required(VERSION 3.20)
+
+    project(task7)
+
+    set(CMAKE_CXX_STANDARD )
+
+    # Files from `./src` directory
+    set(SRC
+            src/main.cpp)
+
+
+    # Running learner side code
+    # Use PROJECT_NAME dependent names of targets for the plugin support to work correctly.
+    add_executable(${PROJECT_NAME}-run ${SRC})
+  learner_created: false
+- name: src/main.cpp
+  visible: true
+  text: |-
+    /**
+      Accomplished using the EduTools plugin by JetBrains https://plugins.jetbrains.com/plugin/10081-edutools
+
+      To modify the template, go to Preferences -> Editor -> File and Code Templates -> Other
+    */
+
+    int main()
+    {
+        // Write your solution here
+        return 0;
+    }
+  learner_created: false
+feedback_link: https://codeforces.com/contest/1549/problem/F2?locale=en
+status: Unchecked
