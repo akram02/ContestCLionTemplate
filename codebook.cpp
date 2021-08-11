@@ -1,14 +1,11 @@
 #include <bits/stdc++.h>
 using namespace std;
-
 typedef long long ll;
-
 ll isPrime(ll n) {
     if(n<=1) return 0;
     for (ll i = 2; i*i <= n; ++i) if(n%i==0) return 0;
     return 1;
 }
-
 void sieve(ll Prime[], ll primeMark[], ll nPrime, ll n) {
     ll i, j, limit = sqrt(n*1.)+2;
     primeMark[1]=1;
@@ -20,15 +17,12 @@ void sieve(ll Prime[], ll primeMark[], ll nPrime, ll n) {
                     primeMark[j]=1;
         }
 }
-
 void Divisors(vector<int> divisors[], int n){
     for(int i = 1; i <= n; i++) for(int j = i; j <= n; j += i)
         divisors[j].push_back(i);
 }
-
 int gcd(int a, int b) { return b == 0 ? a : gcd(b, a % b); }
 int lcm(int a, int b) { return a * (b / gcd(a, b)); }
-
 void sievePhi(int phi[], int phiMark[], int n) {
     for(int i=1; i<=n; i++) phi[i]=i;
     phi[1]=1;
@@ -36,7 +30,6 @@ void sievePhi(int phi[], int phiMark[], int n) {
     for (int i = 2; i <= n; i++) if (!phiMark[i]) for (int j = i; j <= n; j += i)
         phiMark[j] = 1, phi[j] = phi[j] / i * (i - 1);
 }
-
 int Phi(int n) {
     int ret = n;
     for(int i=2; i*i<=n; i++) if(n%i==0) {
@@ -45,7 +38,6 @@ int Phi(int n) {
         }
     return ret;
 }
-
 int bigMod(int a, int b, int M) {
     if(b==0) return 1%M;
     int x = bigMod(a, b/2, M);
@@ -53,7 +45,6 @@ int bigMod(int a, int b, int M) {
     if(b%2==1) x = (x*a) % M;
     return x;
 }
-
 int egcd(int a, int b, int &x, int &y) {
     if(a==0) {
         x=0;y=1;
@@ -64,7 +55,6 @@ int egcd(int a, int b, int &x, int &y) {
     x = y1 - (b/a) * x1, y = x1;
     return d;
 }
-
 void Ncr(int **ncr, int limncr) {
     for(int i=1; i<=limncr; i++)
         for(int j=0; j<=limncr; j++)
@@ -72,7 +62,6 @@ void Ncr(int **ncr, int limncr) {
             else if(j==i||j==0) ncr[i][j]=1;
             else ncr[i][j]=ncr[i-1][j-1]+ncr[i-1][j];
 }
-
 int num[100000], temp[100000];
 void mergeSort(int lo, int hi) {
     if(lo==hi) return;
@@ -87,8 +76,6 @@ void mergeSort(int lo, int hi) {
     }
     for(int k=lo; k<=hi; k++) num[k]=temp[k];
 }
-
-
 int used[20], number[20], N=20;
 void permutation(int at=1, int n=N) {
     if(at==n+1) {
@@ -103,8 +90,6 @@ void permutation(int at=1, int n=N) {
         used[i]=0;
     }
 }
-
-//int number[20];
 int n, k;
 void combination(int at=1, int left=k) {
     if(left>n-at+1) return;
@@ -119,7 +104,6 @@ void combination(int at=1, int left=k) {
     }
     combination(at+1, left);
 }
-
 void combination2(int at=1, int last=0) {
     if(at==k+1) {
         for(int i=1; i<=k; i++) printf("%d ", number[i]);
@@ -131,7 +115,6 @@ void combination2(int at=1, int last=0) {
         combination2(at+1, i);
     }
 }
-
 int queen[20];
 int column[20], diagonal1[40], diagonal2[40];
 void nqueen(int at=1, int n=8) {
@@ -149,7 +132,6 @@ void nqueen(int at=1, int n=8) {
         column[i]=diagonal1[i+at]=diagonal2[n+i-at]=0;
     }
 }
-
 int head[10000], data[100000], nxt[100000], id;
 void insert(int x, int y) {
     data[id]=y;
@@ -166,7 +148,6 @@ int search(int x, int y) {
     }
     return 0;
 }
-
 int p[100];
 int Find(int x) {
     if(p[x]==x) return x;
@@ -175,7 +156,6 @@ int Find(int x) {
 void Union(int a, int b) {
     p[Find(b)] = b;
 }
-
 int on[10], toggle[10];
 void build(int at, int L, int R) {
     on[at] = 0;
@@ -218,7 +198,6 @@ int query(int at, int L, int R, int l, int r) {
     int y = query(at*2+1, mid+1, R, l, r);
     return x+y;
 }
-
 int tree[100], maxVal;
 int read(int idx) {
     int sum=0;
@@ -234,7 +213,6 @@ int update(int idx, int val) {
         idx += (idx&-idx);
     }
 }
-
 typedef pair<int, int> PII;
 vector<PII> v[100];
 struct Node{
@@ -271,7 +249,6 @@ int prim() {
     }
     return ans;
 }
-
 struct Edge {
     int u, v, w;
 };
@@ -290,7 +267,6 @@ int kruskal() {
     }
     return ans;
 }
-
 int freq[100];
 int huffman() {
     priority_queue<int, vector<int>, int> pq;
@@ -304,7 +280,6 @@ int huffman() {
     }
     return pq.top();
 }
-
 vector<Edge> adj[100];
 int dist[100];
 void dijkstra(int s) {
@@ -334,7 +309,6 @@ void bellmanFord(int s) {
         }
     }
 }
-
 int w[100][100];
 void warshall() {
     for(int k=1; k<=n; k++) {
@@ -347,7 +321,6 @@ void warshall() {
         }
     }
 }
-
 int visited[100], matchR[100], matchL[100];
 vector<int> V[100];
 int bmpdfs(int y) {
@@ -362,7 +335,6 @@ int bmpdfs(int y) {
     }
     return 0;
 }
-
 int pi[100], z[100];
 char P[100], T[100];
 void prefixFunction() {
@@ -393,7 +365,6 @@ void zfunction() {
         if(i+z[i]-1>right) left=i, right=i+z[i]-1;
     }
 }
-
 char S[100];
 int node[100][26], root, nnode, isWord[100];
 void initialize() {
@@ -413,7 +384,6 @@ void insert() {
     }
     isWord[now]=1;
 }
-
 int lcp[100], A[100], Rank[100];
 void LCP() {
     int n= strlen(S);
@@ -431,7 +401,6 @@ void LCP() {
     }
 }
 typedef vector<int> vi;
-
 class UnionFind { // OOP style
 private:
     vi p, rank; // remember: vi is vector<int>
@@ -441,11 +410,8 @@ public:
         p.assign(N, 0);
         for (int i = 0; i < N; i++) p[i] = i;
     }
-
     int findSet(int i) { return (p[i] == i) ? i : (p[i] = findSet(p[i])); }
-
     bool isSameSet(int i, int j) { return findSet(i) == findSet(j); }
-
     void unionSet(int i, int j) {
         if (!isSameSet(i, j)) { // if from different set
             int x = findSet(i), y = findSet(j);
@@ -457,15 +423,12 @@ public:
         }
     }
 };
-
 class SegmentTree { // the segment tree is stored like a heap array
 private:
     vi st, A; // recall that vi is: typedef vector<int> vi;
     int n;
-
     int left(int p) { return p << 1; } // same as binary heap operations
     int right(int p) { return (p << 1) + 1; }
-
     void build(int p, int L, int R) { // O(n)
         if (L == R) // as L == R, either one is fine
             st[p] = L; // store the index
@@ -476,18 +439,15 @@ private:
             st[p] = (A[p1] <= A[p2]) ? p1 : p2;
         }
     }
-
     int rmq(int p, int L, int R, int i, int j) { // O(log n)
         if (i > R || j < L) return -1; // current segment outside query range
         if (L >= i && R <= j) return st[p]; // inside query range
-        // compute the min position in the left and right part of the interval
         int p1 = rmq(left(p), L, (L + R) / 2, i, j);
         int p2 = rmq(right(p), (L + R) / 2 + 1, R, i, j);
         if (p1 == -1) return p2; // if we try to access segment outside query
         if (p2 == -1) return p1; // same as above
         return (A[p1] <= A[p2]) ? p1 : p2; // as in build routine
     }
-
 public:
     SegmentTree(const vi &_A) {
         A = _A;
@@ -495,10 +455,8 @@ public:
         st.assign(4 * n, 0); // create large enough vector of zeroes
         build(1, 0, n - 1); // recursive build
     }
-
     int rmq(int i, int j) { return rmq(1, 0, n - 1, i, j); } // overloading
 };
-
 void tain() {
     int arr[] = {18, 17, 13, 19, 15, 11, 20}; // the original array
     vi A(arr, arr + 7);
@@ -506,17 +464,14 @@ void tain() {
     printf("RMQ(1, 3) = %d\n", st.rmq(1, 3)); // answer = index 2
     printf("RMQ(4, 6) = %d\n", st.rmq(4, 6)); // answer = index 5
 }
-
 class FenwickTree {
 private:
     vi ft; // recall that vi is: typedef vector<int> vi;
 public:
     FenwickTree(int n) { ft.assign(n + 1, 0); } // init n + 1 zeroes
-
     int LSOne(int i) {
         return i&(-i);
     }
-
     int rsq(int b) { // returns RSQ(1, b)
         int sum = 0;
         for (; b; b -= LSOne(b)) sum += ft[b];
@@ -525,13 +480,10 @@ public:
     int rsq(int a, int b) { // returns RSQ(a, b)
         return rsq(b) - (a == 1 ? 0 : rsq(a - 1));
     }
-
-    // adjusts value of the k-th element by v (v can be +ve/inc or -ve/dec)
     void adjust(int k, int v) { // note: n = ft.size() - 1
         for (; k < (int) ft.size(); k += LSOne(k)) ft[k] += v;
     }
 };
-
 int ttain() {
     int f[] = {2, 4, 5, 5, 6, 6, 6, 7, 7, 8, 9}; // m = 11 scores
     FenwickTree ft(10); // declare a Fenwick Tree for range [1..10]
@@ -545,7 +497,6 @@ int ttain() {
     ft.adjust(5, 2); // update demo
     printf("%d\n", ft.rsq(1, 10)); // now 13
 } // return 0;
-
 int dr[] = {1,1,0,-1,-1,-1, 0, 1}; // trick to explore an implicit 2D grid
 int dc[] = {0,1,1, 1, 0,-1,-1,-1}; // S,SE,E,NE,N,NW,W,SW neighbors
 int grid[100][100], R=100, C=100;
@@ -558,11 +509,9 @@ int floodfill(int r, int c, char c1, char c2) { // returns the size of CC
         ans += floodfill(r + dr[d], c + dc[d], c1, c2);
     return ans; // the code is neat due to dr[] and dc[]
 }
-
 vi ts; // global vector to store the toposort in reverse order
 vector<pair<int, int>> AdjList[100];
 int dfs_num[100], VISITED = 1, UNVISITED = 0;
-
 void dfs2(int u) { // different function name compared to the original dfs
     dfs_num[u] = VISITED;
     for (int j = 0; j < (int) AdjList[u].size(); j++) {
@@ -572,10 +521,8 @@ void dfs2(int u) { // different function name compared to the original dfs
     }
     ts.push_back(u);
 }
-
 typedef pair<int, int> ii;
 int dfs_low[100], dfs_parent[100], dfsNumberCounter, dfsRoot, rootChildren, articulation_vertex[100];
-
 void articulationPointAndBridge(int u) {
     dfs_low[u] = dfs_num[u] = dfsNumberCounter++; // dfs_low[u] <= dfs_num[u]
     for (int j = 0; j < (int) AdjList[u].size(); j++) {
@@ -593,7 +540,6 @@ void articulationPointAndBridge(int u) {
             dfs_low[u] = min(dfs_low[u], dfs_num[v.first]); // update dfs_low[u]
     }
 }
-
 void fain() {
     dfsNumberCounter = 0;
 //    dfs_num.assign(V, UNVISITED); dfs_low.assign(V, 0);dfs_parent.assign(V, 0); articulation_vertex.assign(V, 0);
@@ -606,10 +552,8 @@ void fain() {
             articulation_vertex[dfsRoot] = (rootChildren > 1);
         }
 }
-
 vi SS; // global variables
 int numSCC = 0;
-
 void tarjanSCC(int u) {
     dfs_low[u] = dfs_num[u] = dfsNumberCounter++; // dfs_low[u] <= dfs_num[u]
     SS.push_back(u); // stores u in a vector based on order of visitation
@@ -634,13 +578,11 @@ void tarjanSCC(int u) {
     }
 }
 void gain() {
-//    dfs_num.assign(V, UNVISITED); dfs_low.assign(V, 0); visited.assign(V, 0);
     dfsNumberCounter = numSCC = 0;
     for (int i = 0; i < 100; i++)
         if (dfs_num[i] == UNVISITED)
             tarjanSCC(i);
 }
-
 void Kruskal() {
     // inside int main()
     vector<pair<int, ii> > EdgeList; // (weight, two vertices) of the edge
@@ -660,10 +602,8 @@ void Kruskal() {
             UF.unionSet(front.second.first, front.second.second); // link them
         }
     } // note: the runtime cost of UFDS is very light
-    // note: the number of disjoint sets must eventually be 1 for a valid MST
     printf("MST cost = %d (Kruskal’s)\n", mst_cost);
 }
-
 int primes[100];
 vi primeFactors(ll N) { // remember: vi is vector<int>, ll is long long
     vi factors;
@@ -684,7 +624,6 @@ void pain() {
     r = primeFactors(142391208960LL); // faster, 2^10*3^4*5*7^4*11*13
     for (vi::iterator i = r.begin(); i != r.end(); i++) printf("! %d\n", *i);
 }
-
 ll numPF(ll N) {
     ll PF_idx = 0, PF = primes[PF_idx], ans = 0;
     while (PF * PF <= N) {
@@ -694,7 +633,6 @@ ll numPF(ll N) {
     if (N != 1) ans++;
     return ans;
 }
-
 ll numDiv(ll N) {
     ll PF_idx = 0, PF = primes[PF_idx], ans = 1; // start from ans = 1
     while (PF * PF <= N) {
@@ -706,7 +644,6 @@ ll numDiv(ll N) {
     if (N != 1) ans *= 2; // (last factor has pow = 1, we add 1 to it)
     return ans;
 }
-
 ll sumDiv(ll N) {
     ll PF_idx = 0, PF = primes[PF_idx], ans = 1; // start from ans = 1
     while (PF * PF <= N) {
@@ -718,7 +655,6 @@ ll sumDiv(ll N) {
     if (N != 1) ans *= ((ll)pow((double)N, 2.0) - 1) / (N - 1); // last
     return ans;
 }
-
 ll EulerPhi(ll N) {
     ll PF_idx = 0, PF = primes[PF_idx], ans = N; // start from ans = N
     while (PF * PF <= N) {
@@ -845,7 +781,6 @@ void constructSA() { // this version can go up to 100000 characters
             RA[i] = tempRA[i];
         if (RA[SA[n-1]] == n-1) break; // nice optimization trick
     } }
-
 int smain() {
     n = (int) strlen(T); // input T as per normal, without the ‘$’
     T[n++] = '$'; // add terminating character
@@ -861,7 +796,6 @@ int smain() {
         } else printf("%s is not found in %s\n", P, T);
     }
 } // return 0;
-
 int PHI[100], PLCP[100], LCPP[100];
 void computeLCP() {
     int i, L;
@@ -877,8 +811,6 @@ void computeLCP() {
         for (i = 0; i < n; i++) // compute LCP in O(n)
             LCPP[i] = PLCP[SA[i]]; // put the permuted LCP to the correct position
 }
-
-// struct point_i { int x, y; }; // basic raw form, minimalist mode
 struct point_i {
     int x, y; // whenever possible, work with point_i
     point_i() { x = y = 0; } // default constructor
@@ -893,7 +825,6 @@ double distt(point p1, point p2) { // Euclidean distance
     // hypot(dx, dy) returns sqrt(dx * dx + dy * dy)
     return hypot(p1.x - p2.x, p1.y - p2.y);
 } // return double
-// rotate p by theta degrees CCW w.r.t origin (0, 0)
 double DEG_to_RAD(double theta) {return theta * cos(-1.) / 180.0;}
 point rotate(point p, double theta) {
     double rad = DEG_to_RAD(theta); // multiply theta with PI / 180.0
@@ -902,7 +833,6 @@ point rotate(point p, double theta) {
 }
 struct line { double a, b, c; };
 double EPS = .00000000001;
-
 void pointsToLine(point p1, point p2, line &l) {
     if (fabs(p1.x - p2.x) < EPS) { // vertical line is fine
         l.a = 1.0;
@@ -914,15 +844,12 @@ void pointsToLine(point p1, point p2, line &l) {
         l.c = -(double) (l.a * p1.x) - p1.y;
     }
 }
-
 bool areParallel(line l1, line l2) { // check coefficients a & b
     return (fabs(l1.a - l2.a) < EPS) && (fabs(l1.b - l2.b) < EPS);
 }
 bool areSame(line l1, line l2) { // also check coefficient c
     return areParallel(l1, l2) && (fabs(l1.c - l2.c) < EPS);
 }
-
-// returns true (+ intersection point) if two lines are intersect
 bool areIntersect(line l1, line l2, point &p) {
     if (areParallel(l1, l2)) return false; // no intersection
     // solve system of 2 linear algebraic equations with 2 unknowns
@@ -932,7 +859,6 @@ bool areIntersect(line l1, line l2, point &p) {
     else p.y = -(l2.a * p.x + l2.c);
     return true;
 }
-
 struct vec {
     double x, y; // name: ‘vec’ is different from STL vector
     vec(double _x, double _y) : x(_x), y(_y) {}
@@ -948,9 +874,6 @@ point translate(point p, vec v) { // translate p according to v
 }
 double dot(vec a, vec b) { return (a.x * b.x + a.y * b.y); }
 double norm_sq(vec v) { return v.x * v.x + v.y * v.y; }
-// returns the distance from p to the line defined by
-// two points a and b (a and b must be different)
-// the closest point is stored in the 4th parameter (byref)
 double distToLine(point p, point a, point b, point &c) {
     // formula: c = a + u * ab
     vec ap = toVec(a, p), ab = toVec(a, b);
@@ -959,9 +882,6 @@ double distToLine(point p, point a, point b, point &c) {
     return distt(p, c);
 } // Euclidean distance between p and c\
 
-// returns the distance from p to the line segment ab defined by
-// two points a and b (still OK if a == b)
-// the closest point is stored in the 4th parameter (byref)
 double distToLineSegment(point p, point a, point b, point &c) {
     vec ap = toVec(a, p), ab = toVec(a, b);
     double u = dot(ap, ab) / norm_sq(ab);
@@ -977,8 +897,6 @@ double angle(point a, point o, point b) { // returns angle aob in rad
     return acos(dot(oa, ob) / sqrt(norm_sq(oa) * norm_sq(ob)));
 }
 double cross(vec a, vec b) { return a.x * b.y - a.y * b.x; }
-// note: to accept collinear points, we have to change the ‘> 0’
-// returns true if point r is on the left side of line pq
 bool ccw(point p, point q, point r) {
     return cross(toVec(p, q), toVec(p, r)) > 0; }
     // returns true if point r is on the same line as the line pq
@@ -1016,10 +934,6 @@ double rInCircle(double ab, double bc, double ca) {
     double rInCircle(point a, point b, point c) {
     return rInCircle(distt(a, b), distt(b, c), distt(c, a));
 }
-// assumption: the required points/lines functions have been written
-// returns 1 if there is an inCircle center, returns 0 otherwise
-// if this function returns 1, ctr will be the inCircle center
-// and r is the same as rInCircle
 int inCircle(point p1, point p2, point p3, point &ctr, double &r) {
     r = rInCircle(p1, p2, p3);
     if (fabs(r) < EPS) return 0; // no inCircle center
@@ -1038,7 +952,6 @@ double rCircumCircle(double ab, double bc, double ca) {
     double rCircumCircle(point a, point b, point c) {
     return rCircumCircle(distt(a, b), distt(b, c), distt(c, a));
 }
-// returns the area, which is half the determinant
 double area(const vector<point> &P) {
     double result = 0.0, x1, y1, x2, y2;
     for (int i = 0; i < (int)P.size()-1; i++) {
@@ -1057,7 +970,6 @@ bool isConvex(const vector<point> &P) { // returns true if all three
             return false; // different sign -> this polygon is concave
             return true;
 }
-// returns true if point p is in either convex/concave polygon P
 double PI= acos(-1.0);
 bool inPolygon(point pt, const vector<point> &P) {
     if ((int)P.size() == 0) return false;
@@ -1068,7 +980,6 @@ bool inPolygon(point pt, const vector<point> &P) {
             else sum -= angle(P[i], pt, P[i+1]); } // right turn/cw
             return fabs(fabs(sum) - 2*PI) < EPS;
 }
-// line segment p-q intersect with line A-B.
 point lineIntersectSeg(point p, point q, point A, point B) {
     double a = B.y - A.y;
     double b = A.x - B.x;
@@ -1076,8 +987,6 @@ point lineIntersectSeg(point p, point q, point A, point B) {
     double u = fabs(a * p.x + b * p.y + c);
     double v = fabs(a * q.x + b * q.y + c);
     return point((p.x * v + q.x * u) / (u+v), (p.y * v + q.y * u) / (u+v)); }
-    // cuts polygon Q along the line formed by point a -> point b
-    // (note: the last point must be the same as the first point)
     vector<point> cutPolygon(point a, point b, const vector<point> &Q) {
     vector<point> P;
     for (int i = 0; i < (int)Q.size(); i++) {
@@ -1139,7 +1048,6 @@ int pointsToLine2(point p1, point p2, line2 &l) {
         return 1; // l contains m and c of the line equation y = mx + c
     }
 }
-// convert point and gradient/slope to line
 void pointSlopeToLine(point p, double m, line &l) {
     l.a = -m; // always -m
     l.b = 1; // always 1
@@ -1152,11 +1060,8 @@ void closestPoint(line l, point p, point &ans) {
     if (fabs(l.a) < EPS) { // special case 2: horizontal line
         ans.x = p.x; ans.y = -(l.c); return; }
     pointSlopeToLine(p, 1 / l.a, perpendicular); // normal line
-    // intersect line l with this perpendicular line
-    // the intersection point is the closest point
     areIntersect(l, perpendicular, ans);
 }
-// returns the reflection of point on a line
 void reflectionPoint(line l, point p, point &ans) {
     point b;
     closestPoint(l, p, b); // similar to distToLine
@@ -1167,14 +1072,12 @@ void reflectionPoint(line l, point p, point &ans) {
 struct AugmentedMatrix { double mat[MAX_N][MAX_N + 1]; };
 struct ColumnVector { double vec[MAX_N]; };
 ColumnVector GaussianElimination(int N, AugmentedMatrix Aug) { // O(N^3)
-    // input: N, Augmented Matrix Aug, output: Column vector X, the answer
     int i, j, k, l; double t; ColumnVector X;
     for (j = 0; j < N - 1; j++) { // the forward elimination phase
         l = j;
         for (i = j + 1; i < N; i++) // which row has largest column value
             if (fabs(Aug.mat[i][j]) > fabs(Aug.mat[l][j]))
                 l = i; // remember this row l
-                // swap this pivot row, reason: to minimize floating point error
                 for (k = j; k <= N; k++) // t is a temporary double variable
                     t = Aug.mat[j][k], Aug.mat[j][k] = Aug.mat[l][k], Aug.mat[l][k] = t;
                 for (i = j + 1; i < N; i++) // the actual forward elimination phase
@@ -1200,12 +1103,10 @@ void Kosaraju(int u, int pass) { // pass = 1 (original), 2 (transpose)
     SS.push_back(u); // as in finding topological order in Section 4.2.5
 }
 void tttain() {
-    // in int main()
     for (int i = 0; i < N; i++)
         if (dfs_num[i] == DFS_WHITE)
             Kosaraju(i, 1);
         numSCC = 0; // second pass: explore the SCCs based on first pass result
-//        dfs_num.assign(N, DFS_WHITE);
         for (int i = N - 1; i >= 0; i--)
             if (dfs_num[S[i]] == DFS_WHITE) {
                 numSCC++;
@@ -1250,42 +1151,15 @@ Matrix matPow(Matrix base, int p) { // O(n^3 log p)
         return ans;
 }
 void SlidingWindow(int A[], int n, int K) {
-    // ii---or pair<int, int>---represents the pair (A[i], i)
     deque<ii> window; // we maintain ‘window’ to be sorted in ascending order
     for (int i = 0; i < n; i++) { // this is O(n)
         while (!window.empty() && window.back().first >= A[i])
             window.pop_back(); // this to keep ‘window’ always sorted
             window.push_back(ii(A[i], i));
-            // use the second field to see if this is part of the current window
             while (window.front().second <= i - K) // lazy deletion
                 window.pop_front();
             if (i + 1 >= K) // from the first window of length K onwards
                 printf("%d\n", window.front().first); // the answer for this window
     }
 }
-#define MAX_N 1000 // adjust this value as needed
-#define LOG_TWO_N 10 // 2^10 > 1000, adjust this value as needed
-class RMQ { // Range Minimum Query
-private:
-    int _A[MAX_N], SpT[MAX_N][LOG_TWO_N];
-public:
-    RMQ(int n, int A[]) { // constructor as well as pre-processing routine
-        for (int i = 0; i < n; i++) {
-            _A[i] = A[i];
-            SpT[i][0] = i; // RMQ of sub array starting at index i + length 2^0=1
-        }
-        // the two nested loops below have overall time complexity = O(n log n)
-        for (int j = 1; (1<<j) <= n; j++) // for each j s.t. 2^j <= n, O(log n)
-            for (int i = 0; i + (1<<j) - 1 < n; i++) // for each valid i, O(n)
-                if (_A[SpT[i][j-1]] < _A[SpT[i+(1<<(j-1))][j-1]]) // RMQ
-                    SpT[i][j] = SpT[i][j-1]; // start at index i of length 2^(j-1)
-                    else // start at index i+2^(j-1) of length 2^(j-1)
-                    SpT[i][j] = SpT[i+(1<<(j-1))][j-1];
-    }
-    int query(int i, int j) { // this query is O(1)
-        int k = (int)floor(log((double)j-i+1) / log(2.0)); // 2^k <= (j-i+1)
-        if (_A[SpT[i][k]] <= _A[SpT[j-(1<<k)+1][k]]) return SpT[i][k];
-        else return SpT[j-(1<<k)+1][k];
-    }
-};
 int main() {return 0;}
